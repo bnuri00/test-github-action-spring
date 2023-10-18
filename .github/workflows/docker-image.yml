@@ -15,11 +15,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag bnuri00/gitaction:$(date +%s)
+      run: docker build --tag bnuri00/gitaction:latest .
 
     - name: Login to DokerHub
-      run: docker login --u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}}}
+      run: docker login --u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
 
     - name: Push the Docker image to the repository
-      run: docker push bnuri00/gitaction:tagname
+      run: docker push bnuri00/gitaction:latest
